@@ -172,3 +172,51 @@ exports.removeExpiredProducts = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.searchProducts = async (req, res, next) => {
+  try {
+    const { query } = req.query;
+
+    // Validate query parameter
+    if (!query || query.trim() === "") {
+      return res
+        .status(400)
+        .json(ApiResponse.error("Search query must be provided"));
+    }
+
+    const searchPattern = new RegExp(query.trim(), "i");
+
+    // Search across multiple fields using $or
+    const products = await Product.find({
+      $or: [
+        { name: searchPattern },
+        { description: searchPattern },
+        { manufacturer: searchPattern },
+        { activeIngredients: searchPattern },
+        { category: searchPattern },
+      ],
+    });
+
+    if (products.length > 0) {
+      products.sort((a, b) => {
+        const nameMatchA = a.name.match(searchPattern) ? 2 : 0;
+        const nameMatchB = b.name.match(searchPattern) ? 2 : 0;
+
+        const descMatchA = a.description.match(searchPattern) ? 1 : 0;
+        const descMatchB = b.description.match(searchPattern) ? 1 : 0;
+
+        return nameMatchB + descMatchB - (nameMatchA + descMatchA);
+      });
+    }
+
+    res.status(200).json(
+      ApiResponse.success("Products retrieved successfully", {
+        products,
+        total: products.length,
+        query: query.trim(),
+      })
+    );
+  } catch (err) {
+    next(err);
+  }
+};

@@ -6,6 +6,7 @@ const router = express.Router();
 
 // Public routes
 router.get("/", productController.getAllProducts);
+router.get("/search", productController.searchProducts);
 router.get("/:id", productController.getProductById);
 
 // Protected routes - Only admin/pharmacy can manage products

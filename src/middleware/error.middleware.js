@@ -21,26 +21,31 @@ const handleValidationErrorDB = (err) => {
 const errorHandler = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
 
-  // Development vs Production error handling
-  if (process.env.NODE_ENV === "development") {
-    if (err.name === "CastError") err = handleCastErrorDB(err);
-    if (err.code === 11000) err = handleDuplicateFieldsDB(err);
-    if (err.name === "ValidationError") err = handleValidationErrorDB(err);
+  // Determine the environment
+  const isDevelopment = process.env.NODE_ENV === "development";
 
-    res.status(err.statusCode).json(
-      ApiResponse.error(err.message, {
-        error: err,
-        stack: err.stack,
-      })
-    );
-  } else {
-    // Production
-    if (err.isOperational) {
-      res.status(err.statusCode).json(ApiResponse.error(err.message));
-    } else {
-      res.status(500).json(ApiResponse.error("Something went wrong!"));
-    }
+  // Set default error message
+  let message = err.isOperational ? err.message : "Something went wrong!";
+
+  // Log the error in development mode
+  if (isDevelopment) {
+    console.error("ERROR 💥", err);
   }
+
+  // Prepare the error response
+  const errorResponse = ApiResponse.error(message);
+
+  // Include stack trace and error details in development mode
+  if (isDevelopment) {
+    errorResponse.error = {
+      name: err.name,
+      message: err.message,
+      stack: err.stack,
+    };
+  }
+
+  // Send the error response
+  res.status(err.statusCode).json(errorResponse);
 };
 
 module.exports = errorHandler;

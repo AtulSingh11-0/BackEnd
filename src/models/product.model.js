@@ -89,6 +89,8 @@ productSchema.index({
   name: "text",
   description: "text",
   manufacturer: "text",
+  category: "text",
+  activeIngredients: "text",
 });
 
 // Add index for expiry date queries

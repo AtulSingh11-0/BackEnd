@@ -996,6 +996,279 @@
 							"body": "{\n    \"success\": true,\n    \"message\": \"Expired products removed successfully\",\n    \"data\": {\n        \"removedCount\": 1\n    },\n    \"timestamp\": \"2024-11-26T14:52:19.138Z\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Search Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/search?query=paracetamol",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "paracetamol"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response - Partial search",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/search?query=Sert",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "Sert"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "793"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"319-HOGxIg1/TMnR36/CL6b+2T0nUf4\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Nov 2024 17:53:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Products retrieved successfully\",\n    \"data\": {\n        \"products\": [\n            {\n                \"_id\": \"6745e3b89ca3752881f39146\",\n                \"name\": \"Sertraline 50mg\",\n                \"description\": \"SSRI antidepressant medication\",\n                \"price\": 35.99,\n                \"category\": \"prescription\",\n                \"manufacturer\": \"MentalHealth Pharma\",\n                \"activeIngredients\": [\n                    \"sertraline hydrochloride\"\n                ],\n                \"stockQuantity\": 180,\n                \"imageUrls\": [\n                    \"https://www.careformulationlabs.com/uploaded_files/sertraline-50.jpg\"\n                ],\n                \"dosageForm\": \"tablet\",\n                \"requiresPrescription\": true,\n                \"sideEffects\": [\n                    \"nausea\",\n                    \"insomnia\",\n                    \"decreased appetite\"\n                ],\n                \"contraindications\": [\n                    \"MAO inhibitors\",\n                    \"pimozide\"\n                ],\n                \"expiryDate\": \"2025-07-31T00:00:00.000Z\",\n                \"batchNumber\": \"SER50-789\",\n                \"createdAt\": \"2024-11-26T15:05:28.476Z\",\n                \"updatedAt\": \"2024-11-28T13:04:13.754Z\",\n                \"__v\": 0\n            }\n        ],\n        \"total\": 1,\n        \"query\": \"Sert\"\n    },\n    \"timestamp\": \"2024-11-28T17:53:14.892Z\"\n}"
+						},
+						{
+							"name": "Success Response - non-existent",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/search?query=nonexistent",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "nonexistent"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "154"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9a-Hf9yKBud+xSvIYiKy63KKg60Wps\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Nov 2024 18:02:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Products retrieved successfully\",\n    \"data\": {\n        \"products\": [],\n        \"total\": 0,\n        \"query\": \"nonexistent\"\n    },\n    \"timestamp\": \"2024-11-28T18:02:29.525Z\"\n}"
+						},
+						{
+							"name": "Error - Search query must be provided",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/search?query=",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"62-Rr0HQRER1/K3Ik/99jvQKBDr4yg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Nov 2024 21:05:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Search query must be provided\",\n    \"timestamp\": \"2024-11-28T21:05:28.820Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/search?query=paracetamol",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "paracetamol"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "766"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2fe-IXxmrQ58LlxSA6TUT5akIIStR0w\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Nov 2024 21:06:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Products retrieved successfully\",\n    \"data\": {\n        \"products\": [\n            {\n                \"_id\": \"6745e0b89ca3752881f39124\",\n                \"name\": \"Paracetamol 500mg\",\n                \"description\": \"Pain reliever and fever reducer\",\n                \"price\": 5.99,\n                \"category\": \"otc\",\n                \"manufacturer\": \"Generic Pharma\",\n                \"activeIngredients\": [\n                    \"paracetamol\"\n                ],\n                \"stockQuantity\": 1020,\n                \"imageUrls\": [\n                    \"https://www.lxir.in/wp-content/uploads/2024/02/HECHOPYRIN-500.png\"\n                ],\n                \"dosageForm\": \"tablet\",\n                \"requiresPrescription\": false,\n                \"sideEffects\": [\n                    \"nausea\",\n                    \"stomach pain\"\n                ],\n                \"contraindications\": [\n                    \"liver disease\",\n                    \"alcohol consumption\"\n                ],\n                \"expiryDate\": \"2025-12-31T00:00:00.000Z\",\n                \"batchNumber\": \"BATCH123\",\n                \"createdAt\": \"2024-11-26T14:52:40.070Z\",\n                \"updatedAt\": \"2024-11-27T09:52:38.366Z\",\n                \"__v\": 0\n            }\n        ],\n        \"total\": 1,\n        \"query\": \"paracetamol\"\n    },\n    \"timestamp\": \"2024-11-28T21:06:31.965Z\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -3240,7 +3513,7 @@
 		},
 		{
 			"key": "token",
-			"value": "",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDVkYTAwOWNhMzc1Mjg4MWYzOTBmYSIsImlhdCI6MTczMjc5ODMyOSwiZXhwIjoxNzMyODg0NzI5fQ.wUH5CX5Szv7GKgtIfiJu4Ee9YqNXu126lrIkahdcc8A",
 			"type": "string"
 		}
 	]
