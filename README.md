@@ -123,7 +123,7 @@ The server will run at `http://localhost:5000`.
 ## Project Structure
 
 ```tree
-minor-project/
+online-medicine-shop-backend/
 ├── src/
 │   ├── config/
 │   ├── controllers/
@@ -136,7 +136,3 @@ minor-project/
 ├── package.json
 └── README.md
 ```
-
-## License
-
-This project is licensed under the MIT License.
