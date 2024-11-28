@@ -1,0 +1,3247 @@
+{
+	"info": {
+		"_postman_id": "8ee3a88c-465a-4056-8654-550261abad3e",
+		"name": "Online Medicine Shop API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28658772"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Gopaljeet Narayan Yadav\",\r\n  \"email\": \"coder.gny@gmail.com\",\r\n  \"password\": \"aisha@coder\",\r\n  \"phone\": \"9871236504\",\r\n  \"address\": {\r\n    \"street\": \"lal kuti\",\r\n    \"city\": \"kolkata\",\r\n    \"state\": \"west bengal\",\r\n    \"zipCode\": \"700039\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/auth/register"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Test User\",\r\n  \"email\": \"testuser@example.com\",\r\n  \"password\": \"Test@123\",\r\n  \"phone\": \"9876543210\",\r\n  \"address\": {\r\n    \"street\": \"123 Test Street\",\r\n    \"city\": \"Test City\",\r\n    \"state\": \"Test State\",\r\n    \"zipCode\": \"12345\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/register"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "399"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18f-ten2eU7wANP4wXfQN6xLZzuswnM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:12:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully\",\n    \"data\": {\n        \"user\": {\n            \"id\": \"6745d7499ca3752881f390ee\",\n            \"name\": \"Test User\",\n            \"email\": \"testuser@example.com\",\n            \"phone\": \"9876543210\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDVkNzQ5OWNhMzc1Mjg4MWYzOTBlZSIsImlhdCI6MTczMjYzMDM0NSwiZXhwIjoxNzMyNzE2NzQ1fQ.zqkZdfJaeAZg61BZtCA-RiYZLPbMnIPlCmqFRcx0gcg\"\n    },\n    \"timestamp\": \"2024-11-26T14:12:25.920Z\"\n}"
+						},
+						{
+							"name": "Error - Email Already Exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Test User 2\",\r\n  \"email\": \"testuser@example.com\",\r\n  \"password\": \"Test@123\",\r\n  \"phone\": \"9876543210\",\r\n  \"address\": {\r\n    \"street\": \"123 Test Street\",\r\n    \"city\": \"Test City\",\r\n    \"state\": \"Test State\",\r\n    \"zipCode\": \"12345\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/register"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d2-m6AwBj7JOL2QXe7N+lxnEBdZeKc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:17:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"E11000 duplicate key error collection: medicine-shop.users index: email_1 dup key: { email: \\\"testuser@example.com\\\" }\",\n    \"error\": {\n        \"code\": 11000\n    },\n    \"timestamp\": \"2024-11-26T14:17:02.109Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"Admin@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/auth/login"
+					},
+					"response": [
+						{
+							"name": "Error - Invalid Credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"testuser@example.com\",\r\n  \"password\": \"Test@12\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/login"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"58-yvGPOYy7afTvdYlE6QmyBFdwJKE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:14:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Invalid credentials\",\n    \"timestamp\": \"2024-11-26T14:14:03.691Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"testuser@example.com\",\r\n  \"password\": \"Test@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "380"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17c-oFcCCaMAU7gayLiTr+JQh9HhXZE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:15:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"id\": \"6745d7499ca3752881f390ee\",\n            \"name\": \"Test User\",\n            \"email\": \"testuser@example.com\",\n            \"role\": \"user\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDVkNzQ5OWNhMzc1Mjg4MWYzOTBlZSIsImlhdCI6MTczMjYzMDU0NywiZXhwIjoxNzMyNzE2OTQ3fQ.Ws8zREROTbUxjjNAZb_ZRXv7Or_41g-ObL0zDkwd7ZQ\"\n    },\n    \"timestamp\": \"2024-11-26T14:15:47.238Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products?page=1&limit=5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/products"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "800"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"320-U4NtPYzQ52d/dIY96TYyc8vHR78\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:42:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Products retrieved successfully\",\n    \"data\": {\n        \"products\": [\n            {\n                \"_id\": \"6745dd269ca3752881f39100\",\n                \"name\": \"Paracetamol 500mg\",\n                \"description\": \"Pain reliever and fever reducer\",\n                \"price\": 6.99,\n                \"category\": \"otc\",\n                \"manufacturer\": \"Generic Pharma\",\n                \"activeIngredients\": [\n                    \"paracetamol\"\n                ],\n                \"stockQuantity\": 800,\n                \"imageUrls\": [\n                    \"https://www.lxir.in/wp-content/uploads/2024/02/HECHOPYRIN-500.png\"\n                ],\n                \"dosageForm\": \"tablet\",\n                \"requiresPrescription\": false,\n                \"sideEffects\": [\n                    \"nausea\",\n                    \"stomach pain\",\n                    \"dizziness\"\n                ],\n                \"contraindications\": [\n                    \"liver disease\",\n                    \"alcohol consumption\"\n                ],\n                \"expiryDate\": \"2025-12-31T00:00:00.000Z\",\n                \"batchNumber\": \"BATCH123\",\n                \"createdAt\": \"2024-11-26T14:37:26.809Z\",\n                \"updatedAt\": \"2024-11-26T14:42:06.380Z\",\n                \"__v\": 0\n            }\n        ],\n        \"pagination\": {\n            \"total\": 1,\n            \"page\": 1,\n            \"pages\": 1,\n            \"limit\": 10\n        }\n    },\n    \"timestamp\": \"2024-11-26T14:42:36.630Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/products/6745e2899ca3752881f39133"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/products/6745dd269ca3752881f39100"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "741"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e5-3T+mMpZA53YojVQZU9RWu/M/waA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:43:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Product retrieved successfully\",\n    \"data\": {\n        \"product\": {\n            \"_id\": \"6745dd269ca3752881f39100\",\n            \"name\": \"Paracetamol 500mg\",\n            \"description\": \"Pain reliever and fever reducer\",\n            \"price\": 6.99,\n            \"category\": \"otc\",\n            \"manufacturer\": \"Generic Pharma\",\n            \"activeIngredients\": [\n                \"paracetamol\"\n            ],\n            \"stockQuantity\": 800,\n            \"imageUrls\": [\n                \"https://www.lxir.in/wp-content/uploads/2024/02/HECHOPYRIN-500.png\"\n            ],\n            \"dosageForm\": \"tablet\",\n            \"requiresPrescription\": false,\n            \"sideEffects\": [\n                \"nausea\",\n                \"stomach pain\",\n                \"dizziness\"\n            ],\n            \"contraindications\": [\n                \"liver disease\",\n                \"alcohol consumption\"\n            ],\n            \"expiryDate\": \"2025-12-31T00:00:00.000Z\",\n            \"batchNumber\": \"BATCH123\",\n            \"createdAt\": \"2024-11-26T14:37:26.809Z\",\n            \"updatedAt\": \"2024-11-26T14:42:06.380Z\",\n            \"__v\": 0\n        }\n    },\n    \"timestamp\": \"2024-11-26T14:43:01.018Z\"\n}"
+						},
+						{
+							"name": "Error - Product not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/products/6745dd269ca3752881f39100"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-vEYIYxHPBKejgHKkNbSqyyVVgSY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 15:07:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"timestamp\": \"2024-11-26T15:07:16.216Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Sertraline 50mg\",\r\n  \"description\": \"SSRI antidepressant medication\",\r\n  \"price\": 35.99,\r\n  \"category\": \"prescription\",\r\n  \"manufacturer\": \"MentalHealth Pharma\",\r\n  \"activeIngredients\": [\"sertraline hydrochloride\"],\r\n  \"stockQuantity\": 200,\r\n  \"imageUrls\": [\"https://www.careformulationlabs.com/uploaded_files/sertraline-50.jpg\"],\r\n  \"dosageForm\": \"tablet\",\r\n  \"requiresPrescription\": true,\r\n  \"sideEffects\": [\"nausea\", \"insomnia\", \"decreased appetite\"],\r\n  \"contraindications\": [\"MAO inhibitors\", \"pimozide\"],\r\n  \"expiryDate\": \"2025-07-31\",\r\n  \"batchNumber\": \"SER50-789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/products"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Paracetamol 500mg\",\r\n  \"description\": \"Pain reliever and fever reducer\",\r\n  \"price\": 5.99,\r\n  \"category\": \"otc\", \r\n  \"manufacturer\": \"Generic Pharma\",\r\n  \"activeIngredients\": [\"paracetamol\"],\r\n  \"stockQuantity\": 1000,\r\n  \"imageUrls\": [\"https://www.lxir.in/wp-content/uploads/2024/02/HECHOPYRIN-500.png\"],\r\n  \"dosageForm\": \"tablet\",\r\n  \"requiresPrescription\": false,\r\n  \"sideEffects\": [\"nausea\", \"stomach pain\"],\r\n  \"contraindications\": [\"liver disease\", \"alcohol consumption\"],\r\n  \"expiryDate\": \"2025-12-31\",\r\n  \"batchNumber\": \"BATCH123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/products"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "728"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d8-4BskX5FJkUq5HHdRP53jWcPYg/A\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:37:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Product created successfully\",\n    \"data\": {\n        \"product\": {\n            \"name\": \"Paracetamol 500mg\",\n            \"description\": \"Pain reliever and fever reducer\",\n            \"price\": 5.99,\n            \"category\": \"otc\",\n            \"manufacturer\": \"Generic Pharma\",\n            \"activeIngredients\": [\n                \"paracetamol\"\n            ],\n            \"stockQuantity\": 1000,\n            \"imageUrls\": [\n                \"https://www.lxir.in/wp-content/uploads/2024/02/HECHOPYRIN-500.png\"\n            ],\n            \"dosageForm\": \"tablet\",\n            \"requiresPrescription\": false,\n            \"sideEffects\": [\n                \"nausea\",\n                \"stomach pain\"\n            ],\n            \"contraindications\": [\n                \"liver disease\",\n                \"alcohol consumption\"\n            ],\n            \"expiryDate\": \"2025-12-31T00:00:00.000Z\",\n            \"batchNumber\": \"BATCH123\",\n            \"_id\": \"6745dd269ca3752881f39100\",\n            \"createdAt\": \"2024-11-26T14:37:26.809Z\",\n            \"updatedAt\": \"2024-11-26T14:37:26.809Z\",\n            \"__v\": 0\n        }\n    },\n    \"timestamp\": \"2024-11-26T14:37:26.832Z\"\n}"
+						},
+						{
+							"name": "Error Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Paracetamol 500mg\",\r\n  \"description\": \"Pain reliever and fever reducer\",\r\n  \"price\": 5.99,\r\n  \"category\": \"otc\", \r\n  \"manufacturer\": \"Generic Pharma\",\r\n  \"activeIngredients\": [\"paracetamol\"],\r\n  \"stockQuantity\": 1000,\r\n  \"imageUrls\": [\"https://www.lxir.in/wp-content/uploads/2024/02/HECHOPYRIN-500.png\"],\r\n  \"dosageForm\": \"tablet\",\r\n  \"requiresPrescription\": false,\r\n  \"sideEffects\": [\"nausea\", \"stomach pain\"],\r\n  \"contraindications\": [\"liver disease\", \"alcohol consumption\"],\r\n  \"expiryDate\": \"2025-12-31\",\r\n  \"batchNumber\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/products"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-+tuS7FV8Kc9FNU9gtZEPlEM+bLs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:38:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product validation failed: batchNumber: Batch number is required\",\n    \"error\": {},\n    \"timestamp\": \"2024-11-26T14:38:45.895Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"price\": 6.99,\r\n  \"stockQuantity\": 800,\r\n  \"sideEffects\": [\"nausea\", \"stomach pain\", \"dizziness\"],\r\n  \"expiryDate\": \"2025-12-31\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/products/6745dd269ca3752881f39100"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"price\": 6.99,\r\n  \"stockQuantity\": 800,\r\n  \"sideEffects\": [\"nausea\", \"stomach pain\", \"dizziness\"],\r\n  \"expiryDate\": \"2025-12-31\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/products/6745dd269ca3752881f39100"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "739"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e3-2L3EQytYW1gn57nQzHRkXc267D0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:42:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Product updated successfully\",\n    \"data\": {\n        \"product\": {\n            \"_id\": \"6745dd269ca3752881f39100\",\n            \"name\": \"Paracetamol 500mg\",\n            \"description\": \"Pain reliever and fever reducer\",\n            \"price\": 6.99,\n            \"category\": \"otc\",\n            \"manufacturer\": \"Generic Pharma\",\n            \"activeIngredients\": [\n                \"paracetamol\"\n            ],\n            \"stockQuantity\": 800,\n            \"imageUrls\": [\n                \"https://www.lxir.in/wp-content/uploads/2024/02/HECHOPYRIN-500.png\"\n            ],\n            \"dosageForm\": \"tablet\",\n            \"requiresPrescription\": false,\n            \"sideEffects\": [\n                \"nausea\",\n                \"stomach pain\",\n                \"dizziness\"\n            ],\n            \"contraindications\": [\n                \"liver disease\",\n                \"alcohol consumption\"\n            ],\n            \"expiryDate\": \"2025-12-31T00:00:00.000Z\",\n            \"batchNumber\": \"BATCH123\",\n            \"createdAt\": \"2024-11-26T14:37:26.809Z\",\n            \"updatedAt\": \"2024-11-26T14:42:06.380Z\",\n            \"__v\": 0\n        }\n    },\n    \"timestamp\": \"2024-11-26T14:42:06.406Z\"\n}"
+						},
+						{
+							"name": "Error - Product not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"price\": 6.99,\r\n  \"stockQuantity\": 800,\r\n  \"sideEffects\": [\"nausea\", \"stomach pain\", \"dizziness\"],\r\n  \"expiryDate\": \"2025-12-31\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/products/6745dd269ca3752881f39100"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-LLgLOjLRlUlxzX7tdy6J8jaR0iA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 15:07:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"timestamp\": \"2024-11-26T15:07:44.281Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Nearly Expired Products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/expiry/nearly-expired?days=15",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"expiry",
+								"nearly-expired"
+							],
+							"query": [
+								{
+									"key": "days",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/expiry/nearly-expired?days=15",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"expiry",
+										"nearly-expired"
+									],
+									"query": [
+										{
+											"key": "days",
+											"value": "15"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "807"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"327-3CKDhffJtEKyiWpZF0cQqeRDja8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:50:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Nearly expired products retrieved successfully\",\n    \"data\": {\n        \"products\": [\n            {\n                \"_id\": \"6745dfc49ca3752881f3911b\",\n                \"name\": \"Paracetamol 500mg\",\n                \"description\": \"Pain reliever and fever reducer\",\n                \"price\": 5.99,\n                \"category\": \"otc\",\n                \"manufacturer\": \"Generic Pharma\",\n                \"activeIngredients\": [\n                    \"paracetamol\"\n                ],\n                \"stockQuantity\": 1000,\n                \"imageUrls\": [\n                    \"https://www.lxir.in/wp-content/uploads/2024/02/HECHOPYRIN-500.png\"\n                ],\n                \"dosageForm\": \"tablet\",\n                \"requiresPrescription\": false,\n                \"sideEffects\": [\n                    \"nausea\",\n                    \"stomach pain\"\n                ],\n                \"contraindications\": [\n                    \"liver disease\",\n                    \"alcohol consumption\"\n                ],\n                \"expiryDate\": \"2024-12-01T00:00:00.000Z\",\n                \"batchNumber\": \"BATCH123\",\n                \"createdAt\": \"2024-11-26T14:48:36.718Z\",\n                \"updatedAt\": \"2024-11-26T14:48:36.718Z\",\n                \"__v\": 0\n            }\n        ],\n        \"threshold\": {\n            \"days\": 15,\n            \"date\": \"2024-12-11T14:50:16.659Z\"\n        }\n    },\n    \"timestamp\": \"2024-11-26T14:50:16.664Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseUrl}}/products/6745dd269ca3752881f39100"
+					},
+					"response": [
+						{
+							"name": "Error - Product not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{baseUrl}}/products/6745dd269ca3752881f39101"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-6ssKVaYkAjz92rhJ9a9MudhDink\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:47:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"timestamp\": \"2024-11-26T14:47:37.069Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{baseUrl}}/products/6745dd269ca3752881f39100"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-003EGOk6KfR0vSc3CM8wFluqVVg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:48:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Product deleted successfully\",\n    \"timestamp\": \"2024-11-26T14:48:08.653Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Expired Products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseUrl}}/products/expiry/remove-expired"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{baseUrl}}/products/expiry/remove-expired"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-SnemdgDfdJDXkvpcz7yezU4HMvk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 14:52:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Expired products removed successfully\",\n    \"data\": {\n        \"removedCount\": 1\n    },\n    \"timestamp\": \"2024-11-26T14:52:19.138Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Get Cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/cart"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/cart"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3776"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ec0-pU/ecD94mzZx7GNk/opH+GHQTc8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 17:38:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Cart retrieved successfully\",\n    \"data\": {\n        \"cart\": {\n            \"_id\": \"67460530ece6dec2066592ce\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"items\": [\n                {\n                    \"product\": {\n                        \"_id\": \"6745e16d9ca3752881f39127\",\n                        \"name\": \"Amoxicillin 500mg\",\n                        \"description\": \"Broad-spectrum antibiotic for bacterial infections\",\n                        \"price\": 12.99,\n                        \"category\": \"prescription\",\n                        \"manufacturer\": \"Pharma Solutions Ltd\",\n                        \"activeIngredients\": [\n                            \"amoxicillin trihydrate\"\n                        ],\n                        \"stockQuantity\": 500,\n                        \"imageUrls\": [\n                            \"https://assets1.drugcarts.com/category/product/almox-500mg-capsule-Drugcarts.jpg\"\n                        ],\n                        \"dosageForm\": \"capsule\",\n                        \"requiresPrescription\": true,\n                        \"sideEffects\": [\n                            \"diarrhea\",\n                            \"rash\",\n                            \"nausea\"\n                        ],\n                        \"contraindications\": [\n                            \"penicillin allergy\",\n                            \"mononucleosis\"\n                        ],\n                        \"expiryDate\": \"2025-06-30T00:00:00.000Z\",\n                        \"batchNumber\": \"AMX500B123\",\n                        \"createdAt\": \"2024-11-26T14:55:41.455Z\",\n                        \"updatedAt\": \"2024-11-26T14:55:41.455Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 10,\n                    \"_id\": \"674605bcece6dec2066592d4\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e2b89ca3752881f39136\",\n                        \"name\": \"Cetirizine 10mg\",\n                        \"description\": \"24-hour allergy relief medication\",\n                        \"price\": 14.99,\n                        \"category\": \"otc\",\n                        \"manufacturer\": \"AllerCare Labs\",\n                        \"activeIngredients\": [\n                            \"cetirizine hydrochloride\"\n                        ],\n                        \"stockQuantity\": 800,\n                        \"imageUrls\": [\n                            \"https://smarthealer.pk/wp-content/uploads/2024/09/cetirizine-tablet.webp\"\n                        ],\n                        \"dosageForm\": \"tablet\",\n                        \"requiresPrescription\": false,\n                        \"sideEffects\": [\n                            \"drowsiness\",\n                            \"dry mouth\"\n                        ],\n                        \"contraindications\": [\n                            \"kidney or liver disease\"\n                        ],\n                        \"expiryDate\": \"2025-05-31T00:00:00.000Z\",\n                        \"batchNumber\": \"CET10-567\",\n                        \"createdAt\": \"2024-11-26T15:01:12.547Z\",\n                        \"updatedAt\": \"2024-11-26T15:01:12.547Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 30,\n                    \"_id\": \"6746062eece6dec2066592dd\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e32f9ca3752881f3913e\",\n                        \"name\": \"Probiotic Max\",\n                        \"description\": \"Daily probiotic supplement for gut health\",\n                        \"price\": 29.99,\n                        \"category\": \"healthcare\",\n                        \"manufacturer\": \"GutHealth Solutions\",\n                        \"activeIngredients\": [\n                            \"Lactobacillus\",\n                            \"Bifidobacterium\"\n                        ],\n                        \"stockQuantity\": 300,\n                        \"imageUrls\": [\n                            \"https://media.simplysupplements.co.uk/library/products/probiotic-max.jpg\"\n                        ],\n                        \"dosageForm\": \"capsule\",\n                        \"requiresPrescription\": false,\n                        \"sideEffects\": [\n                            \"mild bloating initially\"\n                        ],\n                        \"contraindications\": [\n                            \"compromised immune system\"\n                        ],\n                        \"expiryDate\": \"2024-12-30T00:00:00.000Z\",\n                        \"batchNumber\": \"PRB123\",\n                        \"createdAt\": \"2024-11-26T15:03:11.586Z\",\n                        \"updatedAt\": \"2024-11-26T15:03:11.586Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 5,\n                    \"_id\": \"6746071dece6dec2066592ec\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e3b89ca3752881f39146\",\n                        \"name\": \"Sertraline 50mg\",\n                        \"description\": \"SSRI antidepressant medication\",\n                        \"price\": 35.99,\n                        \"category\": \"prescription\",\n                        \"manufacturer\": \"MentalHealth Pharma\",\n                        \"activeIngredients\": [\n                            \"sertraline hydrochloride\"\n                        ],\n                        \"stockQuantity\": 200,\n                        \"imageUrls\": [\n                            \"https://www.careformulationlabs.com/uploaded_files/sertraline-50.jpg\"\n                        ],\n                        \"dosageForm\": \"tablet\",\n                        \"requiresPrescription\": true,\n                        \"sideEffects\": [\n                            \"nausea\",\n                            \"insomnia\",\n                            \"decreased appetite\"\n                        ],\n                        \"contraindications\": [\n                            \"MAO inhibitors\",\n                            \"pimozide\"\n                        ],\n                        \"expiryDate\": \"2025-07-31T00:00:00.000Z\",\n                        \"batchNumber\": \"SER50-789\",\n                        \"createdAt\": \"2024-11-26T15:05:28.476Z\",\n                        \"updatedAt\": \"2024-11-26T15:05:28.476Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 7,\n                    \"_id\": \"6746072fece6dec2066592f5\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e2899ca3752881f39133\",\n                        \"name\": \"Sterile Gauze Pads\",\n                        \"description\": \"4x4 inch sterile gauze for wound dressing\",\n                        \"price\": 8.99,\n                        \"category\": \"supplies\",\n                        \"manufacturer\": \"MediSupply Inc\",\n                        \"activeIngredients\": [],\n                        \"stockQuantity\": 2000,\n                        \"imageUrls\": [\n                            \"https://images-cdn.ubuy.co.in/6640c5d8b67216076d5c8a5b-100pc-large-sterile-gauze-pads-4x4.jpg\"\n                        ],\n                        \"dosageForm\": \"other\",\n                        \"requiresPrescription\": false,\n                        \"sideEffects\": [],\n                        \"contraindications\": [\n                            \"none\"\n                        ],\n                        \"expiryDate\": \"2026-01-31T00:00:00.000Z\",\n                        \"batchNumber\": \"GP4X4-456\",\n                        \"createdAt\": \"2024-11-26T15:00:25.399Z\",\n                        \"updatedAt\": \"2024-11-26T15:00:25.399Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 10,\n                    \"_id\": \"67460752ece6dec2066592ff\"\n                }\n            ],\n            \"totalAmount\": 557.38,\n            \"createdAt\": \"2024-11-26T17:28:16.440Z\",\n            \"updatedAt\": \"2024-11-26T17:37:22.804Z\",\n            \"__v\": 5\n        }\n    },\n    \"timestamp\": \"2024-11-26T17:38:04.760Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add to Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// 1. Basic OTC Medicine\r\n{\r\n  \"productId\": \"6745e0b89ca3752881f39124\",\r\n  \"quantity\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/cart/add"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// 1. Basic OTC Medicine\r\n{\r\n  \"productId\": \"6745e16d9ca3752881f39127\",\r\n  \"quantity\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/cart/add"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1023"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3ff-DPTDH9bsViBcNBIIsu1QWddpfZg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 17:30:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Item added to cart\",\n    \"data\": {\n        \"cart\": {\n            \"_id\": \"67460530ece6dec2066592ce\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"items\": [\n                {\n                    \"product\": {\n                        \"_id\": \"6745e16d9ca3752881f39127\",\n                        \"name\": \"Amoxicillin 500mg\",\n                        \"description\": \"Broad-spectrum antibiotic for bacterial infections\",\n                        \"price\": 12.99,\n                        \"category\": \"prescription\",\n                        \"manufacturer\": \"Pharma Solutions Ltd\",\n                        \"activeIngredients\": [\n                            \"amoxicillin trihydrate\"\n                        ],\n                        \"stockQuantity\": 500,\n                        \"imageUrls\": [\n                            \"https://assets1.drugcarts.com/category/product/almox-500mg-capsule-Drugcarts.jpg\"\n                        ],\n                        \"dosageForm\": \"capsule\",\n                        \"requiresPrescription\": true,\n                        \"sideEffects\": [\n                            \"diarrhea\",\n                            \"rash\",\n                            \"nausea\"\n                        ],\n                        \"contraindications\": [\n                            \"penicillin allergy\",\n                            \"mononucleosis\"\n                        ],\n                        \"expiryDate\": \"2025-06-30T00:00:00.000Z\",\n                        \"batchNumber\": \"AMX500B123\",\n                        \"createdAt\": \"2024-11-26T14:55:41.455Z\",\n                        \"updatedAt\": \"2024-11-26T14:55:41.455Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 10,\n                    \"_id\": \"674605bcece6dec2066592d4\"\n                }\n            ],\n            \"totalAmount\": 129.9,\n            \"createdAt\": \"2024-11-26T17:28:16.440Z\",\n            \"updatedAt\": \"2024-11-26T17:30:36.927Z\",\n            \"__v\": 1\n        }\n    },\n    \"timestamp\": \"2024-11-26T17:30:36.959Z\"\n}"
+						},
+						{
+							"name": "Error - Product not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// 1. Basic OTC Medicine\r\n{\r\n  \"productId\": \"6745e16d9ca3752881f39124\",\r\n  \"quantity\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/cart/add"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-qb/Scxs8WHomR8PMWWIBGGj/tlI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 17:31:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"timestamp\": \"2024-11-26T17:31:17.717Z\"\n}"
+						},
+						{
+							"name": "Error - Insufficient stock",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n\r\n\r\n// // 5. Healthcare Equipment\r\n{\r\n  \"productId\": \"6745e2899ca3752881f39133\",\r\n  \"quantity\": 3000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/cart/add"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-1Z9qrpALD5O0gpSE7AHPfZ+ALQk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 17:37:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Insufficient stock\",\n    \"timestamp\": \"2024-11-26T17:37:34.809Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/cart/update"
+					},
+					"response": [
+						{
+							"name": "Error - Product not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// 1. Update OTC Medicine Quantity\r\n{\r\n  \"productId\": \"674605bcece6dec2066592d4\",\r\n  \"quantity\": 15\r\n}\r\n\r\n// // 2. Update Prescription Medicine\r\n// {\r\n//   \"productId\": \"65a123b4c5d6e7f8g9h0i1j5\",\r\n//   \"quantity\": 2\r\n// }\r\n\r\n// // 3. Update Healthcare Supplies\r\n// {\r\n//   \"productId\": \"65a123b4c5d6e7f8g9h0i1j4\",\r\n//   \"quantity\": 5\r\n// }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/cart/update"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-/FIMOG91XDU9t6/T2Q5p7LP7oXA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 17:41:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"timestamp\": \"2024-11-26T17:41:48.522Z\"\n}"
+						},
+						{
+							"name": "Error - Cart Validation failed",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// 1. Update OTC Medicine Quantity\r\n{\r\n  \"productId\": \"6745e16d9ca3752881f39127\",\r\n  \"quantity\": -1\r\n}\r\n\r\n// // 2. Update Prescription Medicine\r\n// {\r\n//   \"productId\": \"65a123b4c5d6e7f8g9h0i1j5\",\r\n//   \"quantity\": 2\r\n// }\r\n\r\n// // 3. Update Healthcare Supplies\r\n// {\r\n//   \"productId\": \"65a123b4c5d6e7f8g9h0i1j4\",\r\n//   \"quantity\": 5\r\n// }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/cart/update"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "152"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"98-pw6Ll9Mbc430VoupiUuC55xXOkQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 17:42:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Cart validation failed: items.0.quantity: Quantity cannot be less than 1\",\n    \"error\": {},\n    \"timestamp\": \"2024-11-26T17:42:15.952Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n\r\n// // 2. Update Prescription Medicine\r\n{\r\n  \"productId\": \"6745e3b89ca3752881f39146\",\r\n  \"quantity\": 10\r\n}\r\n\r\n// // 3. Update Healthcare Supplies\r\n// {\r\n//   \"productId\": \"65a123b4c5d6e7f8g9h0i1j4\",\r\n//   \"quantity\": 5\r\n// }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/cart/update"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3767"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"eb7-QcPWvs5siFm/nYHetSoBVuIb75Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 17:43:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Cart item updated\",\n    \"data\": {\n        \"cart\": {\n            \"_id\": \"67460530ece6dec2066592ce\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"items\": [\n                {\n                    \"product\": {\n                        \"_id\": \"6745e16d9ca3752881f39127\",\n                        \"name\": \"Amoxicillin 500mg\",\n                        \"description\": \"Broad-spectrum antibiotic for bacterial infections\",\n                        \"price\": 12.99,\n                        \"category\": \"prescription\",\n                        \"manufacturer\": \"Pharma Solutions Ltd\",\n                        \"activeIngredients\": [\n                            \"amoxicillin trihydrate\"\n                        ],\n                        \"stockQuantity\": 500,\n                        \"imageUrls\": [\n                            \"https://assets1.drugcarts.com/category/product/almox-500mg-capsule-Drugcarts.jpg\"\n                        ],\n                        \"dosageForm\": \"capsule\",\n                        \"requiresPrescription\": true,\n                        \"sideEffects\": [\n                            \"diarrhea\",\n                            \"rash\",\n                            \"nausea\"\n                        ],\n                        \"contraindications\": [\n                            \"penicillin allergy\",\n                            \"mononucleosis\"\n                        ],\n                        \"expiryDate\": \"2025-06-30T00:00:00.000Z\",\n                        \"batchNumber\": \"AMX500B123\",\n                        \"createdAt\": \"2024-11-26T14:55:41.455Z\",\n                        \"updatedAt\": \"2024-11-26T14:55:41.455Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 15,\n                    \"_id\": \"674605bcece6dec2066592d4\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e2b89ca3752881f39136\",\n                        \"name\": \"Cetirizine 10mg\",\n                        \"description\": \"24-hour allergy relief medication\",\n                        \"price\": 14.99,\n                        \"category\": \"otc\",\n                        \"manufacturer\": \"AllerCare Labs\",\n                        \"activeIngredients\": [\n                            \"cetirizine hydrochloride\"\n                        ],\n                        \"stockQuantity\": 800,\n                        \"imageUrls\": [\n                            \"https://smarthealer.pk/wp-content/uploads/2024/09/cetirizine-tablet.webp\"\n                        ],\n                        \"dosageForm\": \"tablet\",\n                        \"requiresPrescription\": false,\n                        \"sideEffects\": [\n                            \"drowsiness\",\n                            \"dry mouth\"\n                        ],\n                        \"contraindications\": [\n                            \"kidney or liver disease\"\n                        ],\n                        \"expiryDate\": \"2025-05-31T00:00:00.000Z\",\n                        \"batchNumber\": \"CET10-567\",\n                        \"createdAt\": \"2024-11-26T15:01:12.547Z\",\n                        \"updatedAt\": \"2024-11-26T15:01:12.547Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 30,\n                    \"_id\": \"6746062eece6dec2066592dd\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e32f9ca3752881f3913e\",\n                        \"name\": \"Probiotic Max\",\n                        \"description\": \"Daily probiotic supplement for gut health\",\n                        \"price\": 29.99,\n                        \"category\": \"healthcare\",\n                        \"manufacturer\": \"GutHealth Solutions\",\n                        \"activeIngredients\": [\n                            \"Lactobacillus\",\n                            \"Bifidobacterium\"\n                        ],\n                        \"stockQuantity\": 300,\n                        \"imageUrls\": [\n                            \"https://media.simplysupplements.co.uk/library/products/probiotic-max.jpg\"\n                        ],\n                        \"dosageForm\": \"capsule\",\n                        \"requiresPrescription\": false,\n                        \"sideEffects\": [\n                            \"mild bloating initially\"\n                        ],\n                        \"contraindications\": [\n                            \"compromised immune system\"\n                        ],\n                        \"expiryDate\": \"2024-12-30T00:00:00.000Z\",\n                        \"batchNumber\": \"PRB123\",\n                        \"createdAt\": \"2024-11-26T15:03:11.586Z\",\n                        \"updatedAt\": \"2024-11-26T15:03:11.586Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 5,\n                    \"_id\": \"6746071dece6dec2066592ec\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e3b89ca3752881f39146\",\n                        \"name\": \"Sertraline 50mg\",\n                        \"description\": \"SSRI antidepressant medication\",\n                        \"price\": 35.99,\n                        \"category\": \"prescription\",\n                        \"manufacturer\": \"MentalHealth Pharma\",\n                        \"activeIngredients\": [\n                            \"sertraline hydrochloride\"\n                        ],\n                        \"stockQuantity\": 200,\n                        \"imageUrls\": [\n                            \"https://www.careformulationlabs.com/uploaded_files/sertraline-50.jpg\"\n                        ],\n                        \"dosageForm\": \"tablet\",\n                        \"requiresPrescription\": true,\n                        \"sideEffects\": [\n                            \"nausea\",\n                            \"insomnia\",\n                            \"decreased appetite\"\n                        ],\n                        \"contraindications\": [\n                            \"MAO inhibitors\",\n                            \"pimozide\"\n                        ],\n                        \"expiryDate\": \"2025-07-31T00:00:00.000Z\",\n                        \"batchNumber\": \"SER50-789\",\n                        \"createdAt\": \"2024-11-26T15:05:28.476Z\",\n                        \"updatedAt\": \"2024-11-26T15:05:28.476Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 10,\n                    \"_id\": \"6746072fece6dec2066592f5\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e2899ca3752881f39133\",\n                        \"name\": \"Sterile Gauze Pads\",\n                        \"description\": \"4x4 inch sterile gauze for wound dressing\",\n                        \"price\": 8.99,\n                        \"category\": \"supplies\",\n                        \"manufacturer\": \"MediSupply Inc\",\n                        \"activeIngredients\": [],\n                        \"stockQuantity\": 2000,\n                        \"imageUrls\": [\n                            \"https://images-cdn.ubuy.co.in/6640c5d8b67216076d5c8a5b-100pc-large-sterile-gauze-pads-4x4.jpg\"\n                        ],\n                        \"dosageForm\": \"other\",\n                        \"requiresPrescription\": false,\n                        \"sideEffects\": [],\n                        \"contraindications\": [\n                            \"none\"\n                        ],\n                        \"expiryDate\": \"2026-01-31T00:00:00.000Z\",\n                        \"batchNumber\": \"GP4X4-456\",\n                        \"createdAt\": \"2024-11-26T15:00:25.399Z\",\n                        \"updatedAt\": \"2024-11-26T15:00:25.399Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 10,\n                    \"_id\": \"67460752ece6dec2066592ff\"\n                }\n            ],\n            \"totalAmount\": 2519.3,\n            \"createdAt\": \"2024-11-26T17:28:16.440Z\",\n            \"updatedAt\": \"2024-11-26T17:43:00.927Z\",\n            \"__v\": 5\n        }\n    },\n    \"timestamp\": \"2024-11-26T17:43:00.933Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove from Cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseUrl}}/cart/remove/67460530ece6dec2066592ce"
+					},
+					"response": [
+						{
+							"name": "Error - Card Validation failed",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{baseUrl}}/cart/remove/6745e2899ca3752881f39134"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "194"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c2-yLF6RNPpDvROHHy8j13nmt3MKo0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 17:45:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Cart validation failed: totalAmount: Cast to Number failed for value \\\"NaN\\\" (type number) at path \\\"totalAmount\\\"\",\n    \"error\": {},\n    \"timestamp\": \"2024-11-26T17:45:02.036Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{baseUrl}}/cart/remove/6745e16d9ca3752881f39127"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3037"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bdd-1UVy5bsfIhpRAJJ4CmwjSQ6rK98\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 17:57:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Item removed from cart\",\n    \"data\": {\n        \"cart\": {\n            \"_id\": \"67460530ece6dec2066592ce\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"items\": [\n                {\n                    \"product\": {\n                        \"_id\": \"6745e2b89ca3752881f39136\",\n                        \"name\": \"Cetirizine 10mg\",\n                        \"description\": \"24-hour allergy relief medication\",\n                        \"price\": 14.99,\n                        \"category\": \"otc\",\n                        \"manufacturer\": \"AllerCare Labs\",\n                        \"activeIngredients\": [\n                            \"cetirizine hydrochloride\"\n                        ],\n                        \"stockQuantity\": 800,\n                        \"imageUrls\": [\n                            \"https://smarthealer.pk/wp-content/uploads/2024/09/cetirizine-tablet.webp\"\n                        ],\n                        \"dosageForm\": \"tablet\",\n                        \"requiresPrescription\": false,\n                        \"sideEffects\": [\n                            \"drowsiness\",\n                            \"dry mouth\"\n                        ],\n                        \"contraindications\": [\n                            \"kidney or liver disease\"\n                        ],\n                        \"expiryDate\": \"2025-05-31T00:00:00.000Z\",\n                        \"batchNumber\": \"CET10-567\",\n                        \"createdAt\": \"2024-11-26T15:01:12.547Z\",\n                        \"updatedAt\": \"2024-11-26T15:01:12.547Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 30,\n                    \"_id\": \"6746062eece6dec2066592dd\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e32f9ca3752881f3913e\",\n                        \"name\": \"Probiotic Max\",\n                        \"description\": \"Daily probiotic supplement for gut health\",\n                        \"price\": 29.99,\n                        \"category\": \"healthcare\",\n                        \"manufacturer\": \"GutHealth Solutions\",\n                        \"activeIngredients\": [\n                            \"Lactobacillus\",\n                            \"Bifidobacterium\"\n                        ],\n                        \"stockQuantity\": 300,\n                        \"imageUrls\": [\n                            \"https://media.simplysupplements.co.uk/library/products/probiotic-max.jpg\"\n                        ],\n                        \"dosageForm\": \"capsule\",\n                        \"requiresPrescription\": false,\n                        \"sideEffects\": [\n                            \"mild bloating initially\"\n                        ],\n                        \"contraindications\": [\n                            \"compromised immune system\"\n                        ],\n                        \"expiryDate\": \"2024-12-30T00:00:00.000Z\",\n                        \"batchNumber\": \"PRB123\",\n                        \"createdAt\": \"2024-11-26T15:03:11.586Z\",\n                        \"updatedAt\": \"2024-11-26T15:03:11.586Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 5,\n                    \"_id\": \"6746071dece6dec2066592ec\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e3b89ca3752881f39146\",\n                        \"name\": \"Sertraline 50mg\",\n                        \"description\": \"SSRI antidepressant medication\",\n                        \"price\": 35.99,\n                        \"category\": \"prescription\",\n                        \"manufacturer\": \"MentalHealth Pharma\",\n                        \"activeIngredients\": [\n                            \"sertraline hydrochloride\"\n                        ],\n                        \"stockQuantity\": 200,\n                        \"imageUrls\": [\n                            \"https://www.careformulationlabs.com/uploaded_files/sertraline-50.jpg\"\n                        ],\n                        \"dosageForm\": \"tablet\",\n                        \"requiresPrescription\": true,\n                        \"sideEffects\": [\n                            \"nausea\",\n                            \"insomnia\",\n                            \"decreased appetite\"\n                        ],\n                        \"contraindications\": [\n                            \"MAO inhibitors\",\n                            \"pimozide\"\n                        ],\n                        \"expiryDate\": \"2025-07-31T00:00:00.000Z\",\n                        \"batchNumber\": \"SER50-789\",\n                        \"createdAt\": \"2024-11-26T15:05:28.476Z\",\n                        \"updatedAt\": \"2024-11-26T15:05:28.476Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 10,\n                    \"_id\": \"6746072fece6dec2066592f5\"\n                },\n                {\n                    \"product\": {\n                        \"_id\": \"6745e2899ca3752881f39133\",\n                        \"name\": \"Sterile Gauze Pads\",\n                        \"description\": \"4x4 inch sterile gauze for wound dressing\",\n                        \"price\": 8.99,\n                        \"category\": \"supplies\",\n                        \"manufacturer\": \"MediSupply Inc\",\n                        \"activeIngredients\": [],\n                        \"stockQuantity\": 2000,\n                        \"imageUrls\": [\n                            \"https://images-cdn.ubuy.co.in/6640c5d8b67216076d5c8a5b-100pc-large-sterile-gauze-pads-4x4.jpg\"\n                        ],\n                        \"dosageForm\": \"other\",\n                        \"requiresPrescription\": false,\n                        \"sideEffects\": [],\n                        \"contraindications\": [\n                            \"none\"\n                        ],\n                        \"expiryDate\": \"2026-01-31T00:00:00.000Z\",\n                        \"batchNumber\": \"GP4X4-456\",\n                        \"createdAt\": \"2024-11-26T15:00:25.399Z\",\n                        \"updatedAt\": \"2024-11-26T15:00:25.399Z\",\n                        \"__v\": 0\n                    },\n                    \"quantity\": 10,\n                    \"_id\": \"67460752ece6dec2066592ff\"\n                }\n            ],\n            \"totalAmount\": 1049.45,\n            \"createdAt\": \"2024-11-26T17:28:16.440Z\",\n            \"updatedAt\": \"2024-11-26T17:57:16.200Z\",\n            \"__v\": 6\n        }\n    },\n    \"timestamp\": \"2024-11-26T17:57:16.214Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Clear Cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseUrl}}/cart/clear"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{baseUrl}}/cart/clear"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "291"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"123-mrB8fzpmjCmIc7I9wB090L8PGR4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Nov 2024 18:01:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Cart cleared successfully\",\n    \"data\": {\n        \"cart\": {\n            \"_id\": \"67460530ece6dec2066592ce\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"items\": [],\n            \"totalAmount\": 0,\n            \"createdAt\": \"2024-11-26T17:28:16.440Z\",\n            \"updatedAt\": \"2024-11-26T18:01:48.758Z\",\n            \"__v\": 7\n        }\n    },\n    \"timestamp\": \"2024-11-26T18:01:48.764Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"shippingAddress\": {\r\n    \"street\": \"123 Main Street\",\r\n    \"city\": \"Mumbai\",\r\n    \"state\": \"Maharashtra\",\r\n    \"zipCode\": \"400001\"\r\n  },\r\n  \"paymentMethod\": \"cod\",\r\n  \"paymentDetails\": {\r\n    \"codAmount\": 119.80000000000001\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/orders/create"
+					},
+					"response": [
+						{
+							"name": "Error - Cart is empty",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"shippingAddress\": {\r\n    \"street\": \"123 Test Street\",\r\n    \"city\": \"Test City\", \r\n    \"state\": \"Test State\",\r\n    \"zipCode\": \"12345\"\r\n  },\r\n  \"paymentMethod\": \"card\", // or \"cod\", \"wallet\"\r\n  \"paymentDetails\": {\r\n    \"cardNumber\": \"4111111111111111\",\r\n    \"expiryMonth\": \"12\",\r\n    \"expiryYear\": \"2025\",\r\n    \"cvv\": \"123\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/orders/create"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-fxH1mfeDltSSPruSzh7dDfzCgmA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:03:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Cart is empty\",\n    \"timestamp\": \"2024-11-27T09:03:01.273Z\"\n}"
+						},
+						{
+							"name": "Success Response - Awaiting Prescription",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"shippingAddress\": {\r\n    \"street\": \"123 Test Street\",\r\n    \"city\": \"Test City\", \r\n    \"state\": \"Test State\",\r\n    \"zipCode\": \"12345\"\r\n  },\r\n  \"paymentMethod\": \"card\", // or \"cod\", \"wallet\"\r\n  \"paymentDetails\": {\r\n    \"cardNumber\": \"4111111111111111\",\r\n    \"expiryMonth\": \"12\",\r\n    \"expiryYear\": \"2025\",\r\n    \"cvv\": \"123\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/orders/create"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1092"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"444-5tIKFxon9rYcCm403ngH/r5Jgnc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:07:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Order created. Please upload prescription\",\n    \"data\": {\n        \"order\": {\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"items\": [\n                {\n                    \"product\": \"6745e16d9ca3752881f39127\",\n                    \"quantity\": 10,\n                    \"price\": 12.99,\n                    \"_id\": \"6746e14a82b796cdd2b1d9be\"\n                }\n            ],\n            \"shippingAddress\": {\n                \"street\": \"123 Test Street\",\n                \"city\": \"Test City\",\n                \"state\": \"Test State\",\n                \"zipCode\": \"12345\"\n            },\n            \"paymentMethod\": \"card\",\n            \"paymentStatus\": \"completed\",\n            \"orderStatus\": \"awaiting_prescription\",\n            \"totalAmount\": 192.89000000000001,\n            \"shippingFee\": 50,\n            \"tax\": 12.990000000000002,\n            \"discountAmount\": 0,\n            \"prescriptionRequired\": true,\n            \"prescriptionStatus\": \"pending\",\n            \"_id\": \"6746e14a82b796cdd2b1d9bd\",\n            \"timeline\": [],\n            \"createdAt\": \"2024-11-27T09:07:22.165Z\",\n            \"updatedAt\": \"2024-11-27T09:07:22.217Z\",\n            \"__v\": 0\n        },\n        \"payment\": {\n            \"order\": \"6746e14a82b796cdd2b1d9bd\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"amount\": 192.89000000000001,\n            \"method\": \"card\",\n            \"status\": \"completed\",\n            \"transactionId\": \"CARD_1732698442200_k1ho4v82x\",\n            \"_id\": \"6746e14a82b796cdd2b1d9c2\",\n            \"createdAt\": \"2024-11-27T09:07:22.205Z\",\n            \"updatedAt\": \"2024-11-27T09:07:22.205Z\",\n            \"__v\": 0\n        },\n        \"requiresPrescription\": true\n    },\n    \"timestamp\": \"2024-11-27T09:07:22.232Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/orders"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/orders"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1382"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"566-3u/6cnYWSgleudYlbn8mM9nOSuA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:30:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Orders retrieved successfully\",\n    \"data\": {\n        \"orders\": [\n            {\n                \"shippingAddress\": {\n                    \"street\": \"123 Test Street\",\n                    \"city\": \"Test City\",\n                    \"state\": \"Test State\",\n                    \"zipCode\": \"12345\"\n                },\n                \"_id\": \"6746e14a82b796cdd2b1d9bd\",\n                \"user\": \"6745da009ca3752881f390fa\",\n                \"items\": [\n                    {\n                        \"product\": {\n                            \"_id\": \"6745e16d9ca3752881f39127\",\n                            \"name\": \"Amoxicillin 500mg\",\n                            \"description\": \"Broad-spectrum antibiotic for bacterial infections\",\n                            \"price\": 12.99,\n                            \"category\": \"prescription\",\n                            \"manufacturer\": \"Pharma Solutions Ltd\",\n                            \"activeIngredients\": [\n                                \"amoxicillin trihydrate\"\n                            ],\n                            \"stockQuantity\": 500,\n                            \"imageUrls\": [\n                                \"https://assets1.drugcarts.com/category/product/almox-500mg-capsule-Drugcarts.jpg\"\n                            ],\n                            \"dosageForm\": \"capsule\",\n                            \"requiresPrescription\": true,\n                            \"sideEffects\": [\n                                \"diarrhea\",\n                                \"rash\",\n                                \"nausea\"\n                            ],\n                            \"contraindications\": [\n                                \"penicillin allergy\",\n                                \"mononucleosis\"\n                            ],\n                            \"expiryDate\": \"2025-06-30T00:00:00.000Z\",\n                            \"batchNumber\": \"AMX500B123\",\n                            \"createdAt\": \"2024-11-26T14:55:41.455Z\",\n                            \"updatedAt\": \"2024-11-26T14:55:41.455Z\",\n                            \"__v\": 0\n                        },\n                        \"quantity\": 10,\n                        \"price\": 12.99,\n                        \"_id\": \"6746e14a82b796cdd2b1d9be\"\n                    }\n                ],\n                \"paymentMethod\": \"card\",\n                \"paymentStatus\": \"completed\",\n                \"orderStatus\": \"cancelled\",\n                \"totalAmount\": 192.89000000000001,\n                \"shippingFee\": 50,\n                \"tax\": 12.990000000000002,\n                \"discountAmount\": 0,\n                \"prescriptionRequired\": true,\n                \"prescriptionStatus\": \"approved\",\n                \"timeline\": [],\n                \"createdAt\": \"2024-11-27T09:07:22.165Z\",\n                \"updatedAt\": \"2024-11-27T09:25:32.498Z\",\n                \"__v\": 0\n            }\n        ]\n    },\n    \"timestamp\": \"2024-11-27T09:30:02.106Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Prescription Required Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/orders/prescription-required"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/orders/prescription-required"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "127"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7f-+fNmF3VtqmcF0TXBubBid/QHVdA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:33:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Prescription required orders retrieved\",\n    \"data\": {\n        \"orders\": []\n    },\n    \"timestamp\": \"2024-11-27T09:33:56.386Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancel Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"reason\": \"Dont have enough cash\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/orders/6746eb8721899767d85ac3dc/cancel"
+					},
+					"response": [
+						{
+							"name": "Error - Order cannot be cancelled at this stage",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"reason\": \"Changed my mind\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/orders/6746e14a82b796cdd2b1d9bd/cancel"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-xfQWifGpSUmev+hf6g+JCwIghpw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:46:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Order cannot be cancelled at this stage\",\n    \"timestamp\": \"2024-11-27T09:46:48.446Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"reason\": \"Dont have enough cash\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/orders/6746eb8721899767d85ac3dc/cancel"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "716"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2cc-+TsggePooWgKHiTOeb3fxpF6tt0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:52:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Order cancelled successfully\",\n    \"data\": {\n        \"order\": {\n            \"shippingAddress\": {\n                \"street\": \"123 Main Street\",\n                \"city\": \"Mumbai\",\n                \"state\": \"Maharashtra\",\n                \"zipCode\": \"400001\"\n            },\n            \"_id\": \"6746eb8721899767d85ac3dc\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"items\": [\n                {\n                    \"product\": \"6745e0b89ca3752881f39124\",\n                    \"quantity\": 20,\n                    \"price\": 5.99,\n                    \"_id\": \"6746eb8721899767d85ac3dd\"\n                }\n            ],\n            \"paymentMethod\": \"cod\",\n            \"paymentStatus\": \"pending\",\n            \"orderStatus\": \"cancelled\",\n            \"totalAmount\": 181.78,\n            \"shippingFee\": 50,\n            \"tax\": 11.980000000000002,\n            \"discountAmount\": 0,\n            \"prescriptionRequired\": false,\n            \"prescriptionStatus\": \"not_required\",\n            \"timeline\": [],\n            \"createdAt\": \"2024-11-27T09:51:03.169Z\",\n            \"updatedAt\": \"2024-11-27T09:52:38.382Z\",\n            \"__v\": 0\n        }\n    },\n    \"timestamp\": \"2024-11-27T09:52:38.393Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Order Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"delivered\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/orders/67486edf903f481c504e7d6c/status"
+					},
+					"response": [
+						{
+							"name": "Error - Order not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/orders/6746ec4021899767d85ac403/status"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-rhpjb/WPGR7HNTccrhx7bCn1W34\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 10:03:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Order not found\",\n    \"timestamp\": \"2024-11-27T10:03:09.718Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"status\": \"delivered\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/orders/67486edf903f481c504e7d6c/status"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1636"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"664-tG6YYxzXWXQU2IzGmkYWvPkkf/Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Nov 2024 13:35:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Order status updated successfully\",\n    \"data\": {\n        \"order\": {\n            \"shippingAddress\": {\n                \"street\": \"123 Main Street\",\n                \"city\": \"Mumbai\",\n                \"state\": \"Maharashtra\",\n                \"zipCode\": \"400001\"\n            },\n            \"tracking\": {\n                \"currentStatus\": \"delivered\",\n                \"updates\": [\n                    {\n                        \"status\": \"processing\",\n                        \"location\": \"AIIMS Delhi\",\n                        \"description\": \"Medicine packaged at AIIMS Delhi\",\n                        \"timestamp\": \"2024-11-28T13:27:39.604Z\",\n                        \"_id\": \"67486fcb903f481c504e7d97\"\n                    },\n                    {\n                        \"status\": \"packed\",\n                        \"location\": \"AIIMS Delhi\",\n                        \"description\": \"Medicine packaged at AIIMS Delhi\",\n                        \"timestamp\": \"2024-11-28T13:27:45.507Z\",\n                        \"_id\": \"67486fd1903f481c504e7d9d\"\n                    },\n                    {\n                        \"status\": \"shipped\",\n                        \"location\": \"National Delhi shipping hub\",\n                        \"description\": \"Order shipped to National Delhi shipping hub from AIIMS Delhi\",\n                        \"timestamp\": \"2024-11-28T13:29:44.453Z\",\n                        \"_id\": \"67487048903f481c504e7db5\"\n                    },\n                    {\n                        \"status\": \"delivered\",\n                        \"location\": \"123 Main Street, Mumbai, Maharashtra, 400001\",\n                        \"description\": \"Order delivered to the customer successfully\",\n                        \"timestamp\": \"2024-11-28T13:35:33.195Z\",\n                        \"_id\": \"674871a5903f481c504e7de4\"\n                    }\n                ],\n                \"currentLocation\": \"123 Main Street, Mumbai, Maharashtra, 400001\",\n                \"estimatedDelivery\": \"2024-12-01T13:29:44.454Z\"\n            },\n            \"_id\": \"67486edf903f481c504e7d6c\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"items\": [\n                {\n                    \"product\": \"6745e0b89ca3752881f39124\",\n                    \"quantity\": 20,\n                    \"price\": 5.99,\n                    \"_id\": \"67486edf903f481c504e7d6d\"\n                }\n            ],\n            \"paymentMethod\": \"cod\",\n            \"paymentStatus\": \"completed\",\n            \"orderStatus\": \"delivered\",\n            \"totalAmount\": 181.78,\n            \"shippingFee\": 50,\n            \"tax\": 11.980000000000002,\n            \"discountAmount\": 0,\n            \"prescriptionRequired\": false,\n            \"prescriptionStatus\": \"not_required\",\n            \"createdAt\": \"2024-11-28T13:23:43.379Z\",\n            \"updatedAt\": \"2024-11-28T13:35:33.200Z\",\n            \"__v\": 4\n        }\n    },\n    \"timestamp\": \"2024-11-28T13:35:45.612Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tracking",
+			"item": [
+				{
+					"name": "Get Order Tracking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/tracking/67486edf903f481c504e7d6c"
+					},
+					"response": [
+						{
+							"name": "Error - Order not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/tracking/6746f16121899767d85ac434"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-aBII/zfCOXcnIVRAc+iWqh3SYtw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Nov 2024 13:06:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Order not found\",\n    \"timestamp\": \"2024-11-28T13:06:31.357Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/tracking/67486edf903f481c504e7d6c"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1040"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"410-y/P2PRjnVyo/VzLRvRY1+s6irjY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Nov 2024 13:36:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Tracking info retrieved successfully\",\n    \"data\": {\n        \"tracking\": {\n            \"currentStatus\": \"delivered\",\n            \"updates\": [\n                {\n                    \"status\": \"processing\",\n                    \"location\": \"AIIMS Delhi\",\n                    \"description\": \"Medicine packaged at AIIMS Delhi\",\n                    \"timestamp\": \"2024-11-28T13:27:39.604Z\",\n                    \"_id\": \"67486fcb903f481c504e7d97\"\n                },\n                {\n                    \"status\": \"packed\",\n                    \"location\": \"AIIMS Delhi\",\n                    \"description\": \"Medicine packaged at AIIMS Delhi\",\n                    \"timestamp\": \"2024-11-28T13:27:45.507Z\",\n                    \"_id\": \"67486fd1903f481c504e7d9d\"\n                },\n                {\n                    \"status\": \"shipped\",\n                    \"location\": \"National Delhi shipping hub\",\n                    \"description\": \"Order shipped to National Delhi shipping hub from AIIMS Delhi\",\n                    \"timestamp\": \"2024-11-28T13:29:44.453Z\",\n                    \"_id\": \"67487048903f481c504e7db5\"\n                },\n                {\n                    \"status\": \"delivered\",\n                    \"location\": \"123 Main Street, Mumbai, Maharashtra, 400001\",\n                    \"description\": \"Order delivered to the customer successfully\",\n                    \"timestamp\": \"2024-11-28T13:35:33.195Z\",\n                    \"_id\": \"674871a5903f481c504e7de4\"\n                }\n            ],\n            \"currentLocation\": \"123 Main Street, Mumbai, Maharashtra, 400001\",\n            \"estimatedDelivery\": \"2024-12-01T13:29:44.454Z\"\n        }\n    },\n    \"timestamp\": \"2024-11-28T13:36:15.118Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Order Tracking",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"delivered\",\r\n  \"location\": \"123 Main Street, Mumbai, Maharashtra, 400001\",\r\n  \"description\": \"Order delivered to the customer successfully\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/tracking/67486edf903f481c504e7d6c"
+					},
+					"response": [
+						{
+							"name": "Error - Order not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"status\": \"packed\",\r\n  \"location\": \"AIIMS Delhi\",\r\n  \"description\": \"Medicine packaged at AIIMS Delhi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/tracking/6746f16121899767d85ac434"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-P7R+1Q6wJktcC3HVmmPbNKUoziQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Nov 2024 13:10:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Order not found\",\n    \"timestamp\": \"2024-11-28T13:10:23.761Z\"\n}"
+						},
+						{
+							"name": "Success Resopnse",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"status\": \"delivered\",\r\n  \"location\": \"123 Main Street, Mumbai, Maharashtra, 400001\",\r\n  \"description\": \"Order delivered to the customer successfully\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/tracking/67486edf903f481c504e7d6c"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1033"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"409-mUFuIAFSPxsAjNz3Io4Ol95O56s\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Nov 2024 13:35:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Tracking updated successfully\",\n    \"data\": {\n        \"tracking\": {\n            \"currentStatus\": \"delivered\",\n            \"updates\": [\n                {\n                    \"status\": \"processing\",\n                    \"location\": \"AIIMS Delhi\",\n                    \"description\": \"Medicine packaged at AIIMS Delhi\",\n                    \"timestamp\": \"2024-11-28T13:27:39.604Z\",\n                    \"_id\": \"67486fcb903f481c504e7d97\"\n                },\n                {\n                    \"status\": \"packed\",\n                    \"location\": \"AIIMS Delhi\",\n                    \"description\": \"Medicine packaged at AIIMS Delhi\",\n                    \"timestamp\": \"2024-11-28T13:27:45.507Z\",\n                    \"_id\": \"67486fd1903f481c504e7d9d\"\n                },\n                {\n                    \"status\": \"shipped\",\n                    \"location\": \"National Delhi shipping hub\",\n                    \"description\": \"Order shipped to National Delhi shipping hub from AIIMS Delhi\",\n                    \"timestamp\": \"2024-11-28T13:29:44.453Z\",\n                    \"_id\": \"67487048903f481c504e7db5\"\n                },\n                {\n                    \"status\": \"delivered\",\n                    \"location\": \"123 Main Street, Mumbai, Maharashtra, 400001\",\n                    \"description\": \"Order delivered to the customer successfully\",\n                    \"timestamp\": \"2024-11-28T13:35:33.195Z\",\n                    \"_id\": \"674871a5903f481c504e7de4\"\n                }\n            ],\n            \"currentLocation\": \"123 Main Street, Mumbai, Maharashtra, 400001\",\n            \"estimatedDelivery\": \"2024-12-01T13:29:44.454Z\"\n        }\n    },\n    \"timestamp\": \"2024-11-28T13:35:33.203Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Prescriptions",
+			"item": [
+				{
+					"name": "Upload Prescription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "prescriptionImage",
+									"type": "file",
+									"src": "postman-cloud:///1efad88f-7cb7-4b80-9a86-fe8c35b070e4"
+								}
+							]
+						},
+						"url": "{{baseUrl}}/prescriptions/upload/6746f16121899767d85ac431"
+					},
+					"response": [
+						{
+							"name": "Error - No prescription image provided",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "prescriptionImage",
+											"value": "https://www.researchgate.net/publication/345830022/figure/fig17/AS:957640066748426@1605330592186/A-sample-prescription-image-in-grayscale-version.png",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/prescriptions/upload/6746e14a82b796cdd2b1d9bd"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "99"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"63-7dx3JV72915TzooC8RfSjYIxzEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:09:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"No prescription image provided\",\n    \"timestamp\": \"2024-11-27T09:09:41.324Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "prescriptionImage",
+											"type": "file",
+											"src": "postman-cloud:///1efac9f7-e9b9-4e00-b143-0d83261c0f51"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/prescriptions/upload/6746e14a82b796cdd2b1d9bd"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "461"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1cd-O7K5N9eHrjeMHZrdqg7IMym5k/Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:15:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Prescription uploaded successfully\",\n    \"data\": {\n        \"prescription\": {\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"order\": \"6746e14a82b796cdd2b1d9bd\",\n            \"imageUrl\": \"https://res.cloudinary.com/ddfiyfatr/image/upload/v1732698924/prescriptions/ijennm0s8wdzcubymkhz.png\",\n            \"verificationStatus\": \"pending\",\n            \"_id\": \"6746e32e0d48f20b241e1d5a\",\n            \"createdAt\": \"2024-11-27T09:15:26.987Z\",\n            \"updatedAt\": \"2024-11-27T09:15:26.987Z\",\n            \"__v\": 0\n        }\n    },\n    \"timestamp\": \"2024-11-27T09:15:27.039Z\"\n}"
+						},
+						{
+							"name": "Error - Order not found or prescription not required",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "prescriptionImage",
+											"type": "file",
+											"src": "postman-cloud:///1efac9f7-e9b9-4e00-b143-0d83261c0f51"
+										}
+									]
+								},
+								"url": "{{baseUrl}}/prescriptions/upload/6746e14a82b796cdd2b1d9bd"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-x1SJsjhTHQHARgvX/md5LHXoXFQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 10:16:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Order not found or prescription not required\",\n    \"timestamp\": \"2024-11-27T10:16:18.773Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify Prescription (Admin/Pharmacy)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"approved\", // or \"rejected\"\r\n    \"notes\": \"Prescription verified successfully\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/prescriptions/674869d9df80997b3e249ad1/verify"
+					},
+					"response": [
+						{
+							"name": "Success Response - Rejected",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"rejected\", // or \"rejected\"\r\n    \"notes\": \"Prescription verified successfully\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/prescriptions/6746e32e0d48f20b241e1d5a/verify"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "599"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"257-0bR05fsw3PrUfZ0cRBHcE+Xs8/Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:24:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Prescription verified successfully\",\n    \"data\": {\n        \"prescription\": {\n            \"_id\": \"6746e32e0d48f20b241e1d5a\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"order\": \"6746e14a82b796cdd2b1d9bd\",\n            \"imageUrl\": \"https://res.cloudinary.com/ddfiyfatr/image/upload/v1732698924/prescriptions/ijennm0s8wdzcubymkhz.png\",\n            \"verificationStatus\": \"rejected\",\n            \"createdAt\": \"2024-11-27T09:15:26.987Z\",\n            \"updatedAt\": \"2024-11-27T09:24:13.008Z\",\n            \"__v\": 0,\n            \"verificationNotes\": \"Prescription verified successfully\",\n            \"verifiedBy\": \"6745da009ca3752881f390fa\",\n            \"verifiedAt\": \"2024-11-27T09:24:12.996Z\"\n        }\n    },\n    \"timestamp\": \"2024-11-27T09:24:13.091Z\"\n}"
+						},
+						{
+							"name": "Error - Prescription not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"approved\", // or \"rejected\"\r\n    \"notes\": \"Prescription verified successfully\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/prescriptions/6746e32e0d48f20b241e1d54/verify"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b-J24fxjRoAZLVSIexsqCpsXyzNcE\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:25:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Prescription not found\",\n    \"timestamp\": \"2024-11-27T09:25:43.579Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Prescriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/prescriptions/my-prescriptions"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/prescriptions/my-prescriptions"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1065"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"429-mKnPvGHbuagVSe1Q4Qty7sodmgA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:18:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Prescriptions retrieved successfully\",\n    \"data\": {\n        \"prescriptions\": [\n            {\n                \"_id\": \"6746e32e0d48f20b241e1d5a\",\n                \"user\": \"6745da009ca3752881f390fa\",\n                \"order\": {\n                    \"shippingAddress\": {\n                        \"street\": \"123 Test Street\",\n                        \"city\": \"Test City\",\n                        \"state\": \"Test State\",\n                        \"zipCode\": \"12345\"\n                    },\n                    \"_id\": \"6746e14a82b796cdd2b1d9bd\",\n                    \"user\": \"6745da009ca3752881f390fa\",\n                    \"items\": [\n                        {\n                            \"product\": \"6745e16d9ca3752881f39127\",\n                            \"quantity\": 10,\n                            \"price\": 12.99,\n                            \"_id\": \"6746e14a82b796cdd2b1d9be\"\n                        }\n                    ],\n                    \"paymentMethod\": \"card\",\n                    \"paymentStatus\": \"completed\",\n                    \"orderStatus\": \"awaiting_prescription\",\n                    \"totalAmount\": 192.89000000000001,\n                    \"shippingFee\": 50,\n                    \"tax\": 12.990000000000002,\n                    \"discountAmount\": 0,\n                    \"prescriptionRequired\": true,\n                    \"prescriptionStatus\": \"pending\",\n                    \"timeline\": [],\n                    \"createdAt\": \"2024-11-27T09:07:22.165Z\",\n                    \"updatedAt\": \"2024-11-27T09:07:22.217Z\",\n                    \"__v\": 0\n                },\n                \"imageUrl\": \"https://res.cloudinary.com/ddfiyfatr/image/upload/v1732698924/prescriptions/ijennm0s8wdzcubymkhz.png\",\n                \"verificationStatus\": \"pending\",\n                \"createdAt\": \"2024-11-27T09:15:26.987Z\",\n                \"updatedAt\": \"2024-11-27T09:15:26.987Z\",\n                \"__v\": 0\n            }\n        ]\n    },\n    \"timestamp\": \"2024-11-27T09:18:48.190Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Pending Prescriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/prescriptions/pending"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/prescriptions/pending"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1116"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45c-6/0AupBf1Mdex4ILKehAtkzGJmI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:21:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Pending prescriptions retrieved\",\n    \"data\": {\n        \"prescriptions\": [\n            {\n                \"_id\": \"6746e32e0d48f20b241e1d5a\",\n                \"user\": {\n                    \"_id\": \"6745da009ca3752881f390fa\",\n                    \"name\": \"Admin User\",\n                    \"email\": \"admin@example.com\"\n                },\n                \"order\": {\n                    \"shippingAddress\": {\n                        \"street\": \"123 Test Street\",\n                        \"city\": \"Test City\",\n                        \"state\": \"Test State\",\n                        \"zipCode\": \"12345\"\n                    },\n                    \"_id\": \"6746e14a82b796cdd2b1d9bd\",\n                    \"user\": \"6745da009ca3752881f390fa\",\n                    \"items\": [\n                        {\n                            \"product\": \"6745e16d9ca3752881f39127\",\n                            \"quantity\": 10,\n                            \"price\": 12.99,\n                            \"_id\": \"6746e14a82b796cdd2b1d9be\"\n                        }\n                    ],\n                    \"paymentMethod\": \"card\",\n                    \"paymentStatus\": \"completed\",\n                    \"orderStatus\": \"awaiting_prescription\",\n                    \"totalAmount\": 192.89000000000001,\n                    \"shippingFee\": 50,\n                    \"tax\": 12.990000000000002,\n                    \"discountAmount\": 0,\n                    \"prescriptionRequired\": true,\n                    \"prescriptionStatus\": \"pending\",\n                    \"timeline\": [],\n                    \"createdAt\": \"2024-11-27T09:07:22.165Z\",\n                    \"updatedAt\": \"2024-11-27T09:07:22.217Z\",\n                    \"__v\": 0\n                },\n                \"imageUrl\": \"https://res.cloudinary.com/ddfiyfatr/image/upload/v1732698924/prescriptions/ijennm0s8wdzcubymkhz.png\",\n                \"verificationStatus\": \"pending\",\n                \"createdAt\": \"2024-11-27T09:15:26.987Z\",\n                \"updatedAt\": \"2024-11-27T09:15:26.987Z\",\n                \"__v\": 0\n            }\n        ]\n    },\n    \"timestamp\": \"2024-11-27T09:21:07.211Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Process Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"67486edf903f481c504e7d6c\",\r\n  \"method\": \"cod\",\r\n  \"paymentDetails\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/payments/process"
+					},
+					"response": [
+						{
+							"name": "Error - Order not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/payments/process"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-2lFzcPaBJDIRExI2RXvjv8JXkxg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:35:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Order not found\",\n    \"error\": {},\n    \"timestamp\": \"2024-11-27T09:35:46.640Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"orderId\": \"6746e14a82b796cdd2b1d9bd\",\r\n  \"method\": \"card\",\r\n  \"paymentDetails\": {\r\n    \"cardNumber\": \"4111111111111119\",\r\n    \"expiryMonth\": \"12\",\r\n    \"expiryYear\": \"2025\",\r\n    \"cvv\": \"123\",\r\n    \"name\": \"Test User\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/payments/process"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "419"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a3-36ush7w/HMBvc2lAK0XIOISgBQg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:37:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Payment processed successfully\",\n    \"data\": {\n        \"payment\": {\n            \"order\": \"6746e14a82b796cdd2b1d9bd\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"amount\": 192.89000000000001,\n            \"method\": \"card\",\n            \"status\": \"completed\",\n            \"transactionId\": \"CARD_1732700277607_gvp0ipfof\",\n            \"_id\": \"6746e8754d66cd22ab627841\",\n            \"createdAt\": \"2024-11-27T09:37:57.632Z\",\n            \"updatedAt\": \"2024-11-27T09:37:57.632Z\",\n            \"__v\": 0\n        }\n    },\n    \"timestamp\": \"2024-11-27T09:37:57.654Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Confirm COD Payment (Admin/Pharmacy)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"confirmationCode\": \"123457\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/payments/cod/6748711e903f481c504e7dcb/confirm"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"confirmationCode\": \"123457\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/payments/cod/6746ec4021899767d85ac407/confirm"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "396"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18c-r5aEBd32PGQfgkmHTissgmCftkA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:56:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"COD payment confirmed\",\n    \"data\": {\n        \"payment\": {\n            \"_id\": \"6746ec4021899767d85ac407\",\n            \"order\": \"6746ec4021899767d85ac402\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"amount\": 181.78,\n            \"method\": \"cod\",\n            \"status\": \"completed\",\n            \"transactionId\": \"COD_1732701248579_y82hcnzc0\",\n            \"createdAt\": \"2024-11-27T09:54:08.581Z\",\n            \"updatedAt\": \"2024-11-27T09:56:49.040Z\",\n            \"__v\": 0\n        }\n    },\n    \"timestamp\": \"2024-11-27T09:56:49.055Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Process Refund",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"reason\": \"Order cancelled\",\r\n  \"amount\": 192.89000000000001\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/payments/6746eb8721899767d85ac3e1/refund"
+					},
+					"response": [
+						{
+							"name": "Error - Order validation failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"reason\": \"Order cancelled\",\r\n  \"amount\": 192.89000000000001\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/payments/6746e14a82b796cdd2b1d9c2/refund"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-mZwty9Iso0PxbzRPteG3nZkduEk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:41:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Order validation failed: paymentStatus: `refunded` is not a valid enum value for path `paymentStatus`.\",\n    \"error\": {},\n    \"timestamp\": \"2024-11-27T09:41:00.260Z\"\n}"
+						},
+						{
+							"name": "Error - Can only refund completed payments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"reason\": \"Order cancelled\",\r\n  \"amount\": 192.89000000000001\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/payments/6746e14a82b796cdd2b1d9c2/refund"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "114"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"72-XqWzl3iJx85qgAbyTqUUXfcuoMo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:43:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Can only refund completed payments\",\n    \"error\": {},\n    \"timestamp\": \"2024-11-27T09:43:58.295Z\"\n}"
+						},
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"reason\": \"Order cancelled\",\r\n  \"amount\": 192.89000000000001\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/payments/6746e8754d66cd22ab627841/refund"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "530"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"212-wC8ZAVa0Drb1CDZd7wwz0jVxX34\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Nov 2024 09:45:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Refund processed successfully\",\n    \"data\": {\n        \"payment\": {\n            \"refundDetails\": {\n                \"reason\": \"Order cancelled\",\n                \"refundedAt\": \"2024-11-27T09:45:33.861Z\",\n                \"amount\": 192.89000000000001\n            },\n            \"_id\": \"6746e8754d66cd22ab627841\",\n            \"order\": \"6746e14a82b796cdd2b1d9bd\",\n            \"user\": \"6745da009ca3752881f390fa\",\n            \"amount\": 192.89000000000001,\n            \"method\": \"card\",\n            \"status\": \"refunded\",\n            \"transactionId\": \"CARD_1732700277607_gvp0ipfof\",\n            \"createdAt\": \"2024-11-27T09:37:57.632Z\",\n            \"updatedAt\": \"2024-11-27T09:45:33.876Z\",\n            \"__v\": 0\n        }\n    },\n    \"timestamp\": \"2024-11-27T09:45:33.925Z\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
