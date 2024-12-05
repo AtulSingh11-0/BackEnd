@@ -1,6 +1,7 @@
 const Order = require("../models/order.model");
 const Cart = require("../models/cart.model");
 const Product = require("../models/product.model");
+const Payment = require("../models/payment.model"); // Add this import
 const PaymentService = require("../services/payment.service");
 const ApiResponse = require("../utils/responses");
 const { ValidationError, NotFoundError } = require("../utils/errors");
@@ -10,19 +11,13 @@ exports.createOrder = async (req, res, next) => {
   try {
     const { shippingAddress, paymentMethod } = req.body;
 
-    // Validate shipping address
-    try {
-      shippingService.validateAddress(shippingAddress);
-    } catch (error) {
-      throw new ValidationError(error.message);
-    }
-
     // Get user's cart
     const cart = await Cart.findOne({ user: req.user.id }).populate(
       "items.product"
     );
+
     if (!cart || cart.items.length === 0) {
-      throw new ValidationError("Cannot create order with empty cart");
+      throw new ValidationError("Cannot create order with an empty cart");
     }
 
     // Validate payment method
@@ -49,16 +44,16 @@ exports.createOrder = async (req, res, next) => {
       price: item.product.price,
     }));
 
-    // Calculate shipping fee
-    const shippingFee = shippingService.calculateShippingFee(
-      cart.items,
-      shippingAddress
-    );
+    // Helper function to round numbers to two decimal places
+    const roundToTwo = (num) => Math.round(num * 100) / 100;
 
     // Calculate totals
-    const subtotal = cart.totalAmount;
-    const tax = subtotal * 0.1;
-    const totalAmount = subtotal + shippingFee + tax;
+    const subtotal = cart.totalAmount; // Assuming this is already calculated in the cart
+    const tax = roundToTwo(subtotal * 0.1);
+    const shippingFee = roundToTwo(
+      shippingService.calculateShippingFee(cart.items, shippingAddress)
+    );
+    const totalAmount = roundToTwo(subtotal + shippingFee + tax);
 
     // Create order
     const order = await Order.create({
@@ -116,6 +111,7 @@ exports.createOrder = async (req, res, next) => {
       throw new Error(`Payment failed: ${paymentError.message}`);
     }
   } catch (err) {
+    console.error(err);
     next(err);
   }
 };
@@ -155,6 +151,7 @@ exports.getOrderById = async (req, res, next) => {
 
 exports.cancelOrder = async (req, res, next) => {
   try {
+    const { reason } = req.body;
     const order = await Order.findOne({
       _id: req.params.id,
       user: req.user.id,
@@ -164,14 +161,23 @@ exports.cancelOrder = async (req, res, next) => {
       return res.status(404).json(ApiResponse.error("Order not found"));
     }
 
-    if (!["pending", "awaiting_prescription"].includes(order.orderStatus)) {
+    // Only prevent cancellation for delivered or already cancelled orders
+    if (["delivered", "cancelled"].includes(order.orderStatus)) {
       return res
         .status(400)
-        .json(ApiResponse.error("Order cannot be cancelled at this stage"));
+        .json(
+          ApiResponse.error(
+            "Cannot cancel a delivered or already cancelled order"
+          )
+        );
     }
 
-    // Only restore stock if it was previously deducted (non-prescription orders)
-    if (!order.prescriptionRequired) {
+    // Restore stock if it was deducted (for confirmed orders)
+    if (
+      ["confirmed", "processing", "packed", "shipped"].includes(
+        order.orderStatus
+      )
+    ) {
       for (const item of order.items) {
         await Product.findByIdAndUpdate(item.product, {
           $inc: { stockQuantity: item.quantity },
@@ -179,7 +185,19 @@ exports.cancelOrder = async (req, res, next) => {
       }
     }
 
+    // If payment was completed, initiate refund
+    if (order.paymentStatus === "completed") {
+      const payment = await Payment.findOne({ order: order._id });
+      if (payment) {
+        await PaymentService.processRefund(
+          payment._id,
+          reason || "No reason provided"
+        );
+      }
+    }
+
     order.orderStatus = "cancelled";
+    order.cancellationReason = reason || "Cancelled by user";
     await order.save();
 
     res

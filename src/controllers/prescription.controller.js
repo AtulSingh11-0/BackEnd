@@ -99,18 +99,21 @@ exports.verifyPrescription = async (req, res, next) => {
     // Update order status
     const order = await Order.findById(prescription.order);
     order.prescriptionStatus = status;
-    await order.save();
 
-    // If prescription is rejected, cancel the order
-    if (status === "rejected") {
+    // Update order status based on prescription verification
+    if (status === "approved") {
+      order.orderStatus = "processing"; // Change status to processing when approved
+    } else if (status === "rejected") {
       order.orderStatus = "cancelled";
       order.cancellationReason = "Prescription rejected";
-      await order.save();
     }
+
+    await order.save();
 
     res.status(200).json(
       ApiResponse.success("Prescription verified successfully", {
         prescription,
+        order,
       })
     );
   } catch (err) {
