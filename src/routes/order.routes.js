@@ -18,6 +18,22 @@ router.get(
   "/prescription-required",
   orderController.getPrescriptionRequiredOrders
 );
+
+// Admin/Pharmacy routes
+router.get(
+  "/all",
+  restrictTo("admin", "pharmacy"),
+  orderController.getAllOrders
+);
+
+// New admin route for single order details
+router.get(
+  "/admin/:id",
+  restrictTo("admin", "pharmacy"),
+  orderController.getAdminOrderDetails
+);
+
+// Customer routes
 router.get("/:id", orderController.getOrderById);
 router.put("/:id/cancel", orderController.cancelOrder);
 

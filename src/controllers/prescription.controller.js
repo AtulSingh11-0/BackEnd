@@ -81,6 +81,26 @@ exports.getPendingPrescriptions = async (req, res, next) => {
   }
 };
 
+exports.getPrescriptionByOrderId = async (req, res, next) => {
+  try {
+    const prescription = await Prescription.findOne({
+      order: req.params.orderId,
+    });
+
+    if (!prescription) {
+      return res.status(404).json(ApiResponse.error("Prescription not found"));
+    }
+
+    res.status(200).json(
+      ApiResponse.success("Prescription retrieved successfully", {
+        prescription,
+      })
+    );
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.verifyPrescription = async (req, res, next) => {
   try {
     const { status, notes } = req.body;

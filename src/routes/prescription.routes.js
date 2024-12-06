@@ -24,6 +24,7 @@ router.get("/my-prescriptions", prescriptionController.getUserPrescriptions);
 // Pharmacy/Admin routes
 router.use(restrictTo("pharmacy", "admin"));
 router.get("/pending", prescriptionController.getPendingPrescriptions);
+router.get("/order/:orderId", prescriptionController.getPrescriptionByOrderId);
 router.put(
   "/:id/verify",
   validatePrescriptionVerification,
