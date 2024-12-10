@@ -22,43 +22,66 @@ exports.getAllProducts = async (req, res, next) => {
       minPrice,
       maxPrice,
       requiresPrescription,
-      search,
       expiryBefore,
       expiryAfter,
       showExpired = false,
+      sortBy,
     } = req.query;
 
     const query = {};
 
-    // Build filter conditions
-    if (category) query.category = category;
+    // Build filter conditions without search
+    if (category) {
+      // Handle multiple categories
+      const categories = category.split(",").filter(Boolean);
+      if (categories.length > 0) {
+        query.category = { $in: categories };
+      }
+    }
     if (manufacturer) query.manufacturer = manufacturer;
     if (requiresPrescription)
       query.requiresPrescription = requiresPrescription === "true";
+
+    // Price filter
     if (minPrice || maxPrice) {
       query.price = {};
       if (minPrice) query.price.$gte = Number(minPrice);
       if (maxPrice) query.price.$lte = Number(maxPrice);
     }
 
-    // Text search
-    if (search) {
-      query.$text = { $search: search };
-    }
-
-    // Expiry date filters
+    // Expiry filters
     if (!showExpired) {
       query.expiryDate = { $gt: new Date() };
     }
-
     if (expiryBefore || expiryAfter) {
       query.expiryDate = query.expiryDate || {};
       if (expiryBefore) query.expiryDate.$lte = new Date(expiryBefore);
       if (expiryAfter) query.expiryDate.$gte = new Date(expiryAfter);
     }
 
+    // Sorting
+    const sortOptions = {};
+    if (sortBy) {
+      switch (sortBy) {
+        case "price_asc":
+          sortOptions.price = 1;
+          break;
+        case "price_desc":
+          sortOptions.price = -1;
+          break;
+        case "name_asc":
+          sortOptions.name = 1;
+          break;
+        case "name_desc":
+          sortOptions.name = -1;
+          break;
+        default:
+          sortOptions.createdAt = -1;
+      }
+    }
+
     const products = await Product.find(query)
-      .sort({ createdAt: -1 })
+      .sort(sortOptions)
       .skip((page - 1) * limit)
       .limit(Number(limit));
 
