@@ -1,6 +1,7 @@
-const express = require("express");
 const cors = require("cors");
+const express = require("express");
 const mongoose = require("mongoose");
+const errorHandler = require("./middleware/error.middleware");
 require("dotenv").config();
 
 const app = express();
@@ -8,6 +9,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(errorHandler);
 
 // Database connection
 mongoose
@@ -36,10 +38,6 @@ app.use("/api/v1/orders", orderRoutes);
 app.use("/api/v1/prescriptions", prescriptionRoutes);
 app.use("/api/v1/payments", paymentRoutes);
 app.use("/api/v1/tracking", trackingRoutes);
-
-// Error handling middleware
-const errorHandler = require("./middleware/error.middleware");
-app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
